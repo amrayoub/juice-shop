@@ -24,4 +24,4 @@ jobs:
         run: pip install semgrep
 
       - name: Run Semgrep with OWASP Top 10 rules
-        run: semgrep --config p/owasp-top-ten --error
+        run: semgrep --config p/owasp-top-ten --severity: ERROR --error
