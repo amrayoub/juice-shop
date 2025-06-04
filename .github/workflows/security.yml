@@ -1,0 +1,34 @@
+name: Semgrep Scan
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  semgrep:
+    name: Run Semgrep
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Semgrep
+        run: pip install semgrep
+
+      - name: Run Semgrep with OWASP Top 10 rules
+        run: semgrep --config p/owasp-top-ten --severity ERROR --error
+      
+      - name: Run Snyk (Optional)
+        uses: snyk/actions/node@master
+        with:
+          command: test
+        env:
+          SNYK_TOKEN: ${{120596ad-008e-400d-94cc-7596e79522ca}}
