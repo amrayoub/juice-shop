@@ -25,10 +25,10 @@ jobs:
 
       - name: Run Semgrep with OWASP Top 10 rules
         run: semgrep --config p/owasp-top-ten --severity ERROR --error
-      
-      - name: Run Snyk (Optional)
+            
+      - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         with:
           command: test
         env:
-          SNYK_TOKEN: ${{120596ad-008e-400d-94cc-7596e79522ca}}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
