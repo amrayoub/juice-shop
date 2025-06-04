@@ -31,4 +31,4 @@ jobs:
         with:
           command: test
         env:
-          SNYK_TOKEN: ${{120596ad-008e-400d-94cc-7596e79522ca}}
+          SNYK_TOKEN: 120596ad-008e-400d-94cc-7596e79522ca
