@@ -20,15 +20,15 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Semgrep
-        run: pip install semgrep
-
-      - name: Run Semgrep with OWASP Top 10 rules
-        run: semgrep --config p/owasp-top-ten --severity ERROR --error
-            
       - name: Run Snyk to check for vulnerabilities--
         uses: snyk/actions/node@master
         with:
           command: test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Install Semgrep
+        run: pip install semgrep
+
+      - name: Run Semgrep with OWASP Top 10 rules
+        run: semgrep --config p/owasp-top-ten --severity ERROR --error
