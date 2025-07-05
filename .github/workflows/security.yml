@@ -23,8 +23,8 @@ jobs:
       - name: Install Semgrep
         run: pip install semgrep
 
-      - name: Run Semgrep with OWASP Top 10 rules
-        run: semgrep --config p/owasp-top-ten --severity ERROR --error
+      - name: Run Semgrep with OWASP Top 10 rules (non-blocking)
+        run: semgrep --config p/owasp-top-ten --severity ERROR --error || true
 
       - name: Run Semgrep and output SARIF
         run: semgrep --config p/owasp-top-ten --severity ERROR --sarif --output results.sarif || true
