@@ -26,7 +26,7 @@ jobs:
       - name: Run Semgrep with OWASP Top 10 rules
         run: semgrep --config p/owasp-top-ten --severity ERROR --error
             
-      - name: Run Snyk to check for vulnerabilities
+      - name: Run Snyk to check for vulnerabilities--
         uses: snyk/actions/node@master
         with:
           command: test
