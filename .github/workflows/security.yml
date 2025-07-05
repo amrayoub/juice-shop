@@ -34,6 +34,9 @@ jobs:
         with:
           sarif_file: results.sarif
 
+      - name: Install Node.js dependencies
+        run: npm install
+
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         with:
